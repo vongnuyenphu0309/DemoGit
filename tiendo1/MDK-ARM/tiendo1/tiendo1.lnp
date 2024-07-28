@@ -1,0 +1,23 @@
+--cpu Cortex-M3
+"tiendo1\startup_stm32f103x6.o"
+"tiendo1\main.o"
+"tiendo1\stm32f1xx_it.o"
+"tiendo1\stm32f1xx_hal_msp.o"
+"tiendo1\stm32f1xx_hal_gpio_ex.o"
+"tiendo1\stm32f1xx_hal_tim.o"
+"tiendo1\stm32f1xx_hal_tim_ex.o"
+"tiendo1\stm32f1xx_hal.o"
+"tiendo1\stm32f1xx_hal_rcc.o"
+"tiendo1\stm32f1xx_hal_rcc_ex.o"
+"tiendo1\stm32f1xx_hal_gpio.o"
+"tiendo1\stm32f1xx_hal_dma.o"
+"tiendo1\stm32f1xx_hal_cortex.o"
+"tiendo1\stm32f1xx_hal_pwr.o"
+"tiendo1\stm32f1xx_hal_flash.o"
+"tiendo1\stm32f1xx_hal_flash_ex.o"
+"tiendo1\stm32f1xx_hal_exti.o"
+"tiendo1\system_stm32f1xx.o"
+--strict --scatter "tiendo1\tiendo1.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "tiendo1.map" -o tiendo1\tiendo1.axf
