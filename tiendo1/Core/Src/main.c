@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "tiendo1.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,8 +56,8 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t sta_button;
-uint32_t a=0;
+tiendo1_Typedef tiendo11;
+tiendo1_Typedef tiendo12;
 /* USER CODE END 0 */
 
 /**
@@ -91,7 +91,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
-
+tiendo1_init(&tiendo11,GPIOA,GPIO_PIN_0);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,31 +101,7 @@ HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		sta_button = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
-		if (sta_button ==0)
-		{
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
-			HAL_Delay(500);
-			HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
-			HAL_Delay(500);
-		}
-		if (sta_button==1)
-		{
-			if (a==0)
-			{
-			for(int a=1;a<=1999;a++)
-			{
-			TIM3->CCR1=a;
-				HAL_Delay(1);
-			}
-			}else if (a==1999)
-			for (int a=1999;a>=0;a--)
-			{
-				TIM3->CCR1=a;
-				HAL_Delay(1);
-			}
-				
-		}
+	tiendo1_handle(&tiendo11);
   }
   /* USER CODE END 3 */
 }
